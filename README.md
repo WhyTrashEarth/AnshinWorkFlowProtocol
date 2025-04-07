@@ -53,4 +53,20 @@ Organization: **WhyTrashEarth**
 Anshin Workflow Protocol exists to protect people,  
 not control them."*
 
----
+# ✍️ Author's Note
+
+I simply wanted to create something that was extremely simple and essentially eliminated passwords in a workplace, while protecting employees, companies, and organizations alike.
+
+The entire basis for this idea was:  
+- No more stress for employees trying to manage complex passwords.  
+- No more fear after accidentally clicking a bad link.  
+- A permanent safety net for both people and data.
+
+If we can somehow simplify everything for everyone — and make things better — that's all I could ever hope for.  
+It is my sincere wish that this idea and protocol can help protect many lives and many futures.
+
+Hope you all like it.  
+Stay Super Awesome! :3
+
+
+Alec AKA Chunks @WhyTrashEarth 
