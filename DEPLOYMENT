@@ -1,0 +1,136 @@
+# 🌸 Anshin Workflow Protocol — Deployment Blueprint (v1.0)
+
+by Alec / WhyTrashEarth
+
+ΧΟΥΑΙ ΤΡΑΣ ΕΡΘ 1796
+
+---
+
+# 🛡️ Overview
+
+This document outlines the technical deployment and operational flow of the Anshin Workflow Protocol (AWP).  
+The protocol is designed for environments where human error, insider threat, phishing, and infrastructure compromise must be mitigated through physical separation, time-bound access, and behavioral awareness.
+
+---
+
+# 📦 I. Required Components
+
+## Host Machines
+
+- Fedora Linux (minimum version 39) with SELinux set to enforcing
+- No administrative access for users
+- No auto-login; BIOS password recommended
+- Logging enabled (journalctl + optional rsyslog)
+- USB auto-mount disabled or restricted to signed devices
+
+## USB Keys / Drives
+
+- Hardware encrypted or read-only (recommended)
+- Signed daily with a new cryptographic hash/checksum
+- Created via trusted signing station or validated virtual machine (see Section III)
+- Live image contains only the tools and access relevant to the employee’s role
+
+**Optional:**
+
+- YubiKey or TPM for 2FA / USB validation
+- Air-gapped or isolated deployment signing stations
+
+---
+
+# 🕒 II. Daily USB Issuance Flow
+
+## At Start of Day:
+
+- Each USB is signed and validated before use.
+- Drive contains:
+  - Role-specific apps/tools (preinstalled)
+  - Logging configuration
+  - Time-expiry flag or logout timer
+- USB is assigned to one specific user, labeled.
+
+## During Work Session:
+
+- USB is inserted into a locked-down Fedora machine.
+- Session begins upon validation of device + timestamp.
+- USB removal immediately locks session.
+- Reauthentication required to resume (multi-layer depending on org setup).
+
+## At End of Day:
+
+- USB is returned.
+- Wiped and validated by clean station or rebuilt the next morning.
+- Logs exported (optionally via secure channel or physical media transfer).
+
+---
+
+# 🖥️ III. USB Validation Station (Virtual Option)
+
+For added integrity, all USBs must pass through:
+
+- A dedicated virtual machine with no external connectivity.
+
+**Validation Script:**
+- Validates image hash
+- Checks partitions and metadata
+- Scrubs any unexpected binaries or configs
+- Outputs log to secure internal server
+
+> Enterprises may contract trusted third-party vendors to verify, validate, and sign USBs before deployment.
+
+---
+
+# 🚨 IV. Duress + Incident Protocols
+
+**Duress Trigger Options:**
+
+- USB removal before expected time flags log
+- Incorrect timestamp/device ID triggers auto-lock + alert
+- Optional silent alert (e.g., modified resolv.conf file, canary script, or dummy directory execution)
+
+**Recovery:**
+
+- Compromised USB is destroyed (physically or digitally wiped).
+- New device issued after identity revalidation.
+- Host is reviewed for compromise (no persistence expected).
+
+---
+
+# 📜 V. Logging + Audit Trail
+
+- All session activity is written to encrypted logs.
+- Logs may be extracted daily or streamed to secure audit endpoint.
+- USB insertion/removal events, user actions, and authentication attempts are timestamped.
+- Internal policies determine retention and review cadence.
+
+---
+
+# 🌸 VI. Human Integration
+
+This system is not punitive. It is:
+
+- Compassionate toward user error
+- Built to contain mistakes, not punish them
+- Designed to protect both people and data
+
+**Suggested Messaging:**
+
+> "Be more careful. But thankfully, Anshin protected you."
+
+---
+
+# 🏛️ VII. Attribution + Licensing
+
+This protocol is licensed under the MIT License.  
+You may use, modify, and distribute this protocol freely, with required attribution:
+
+© 2025 Alec / WhyTrashEarth  
+ΧΟΥΑΙ ΤΡΑΣ ΕΡΘ 1796
+
+If Anshin protects your organization and you feel compelled to give back, we ask only one thing:  
+Please consider donating to an environmental cause.  
+We recommend: [WhyTrashEarth.org](https://whytrashearth.org) (or your local equivalent).
+
+**Contact:** Alec@WhyTrashEarth.org  
+**Or DM:** @WhyTrashEarth on most social platforms.
+
+🌸 Let’s protect people and the planet.
